@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "market-analysis-scripts"
+version = "0.1.0"
+description = "A compilation of scripts for securities investment/market analysis."
+authors = ["mmrakib <mohammadmrakib@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+matplotlib = "^3.9.2"
+requests = "^2.32.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

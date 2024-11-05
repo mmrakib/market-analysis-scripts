@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import xml.etree.ElementTree as ET
 from datetime import datetime
-from pprint import pprint
 
 DATA_FOLDER = "data"
 INPUT_FILE = "us_treasury_yield_data.xml"
@@ -39,15 +38,12 @@ def parse_xml(xml_data):
     return values
 
 def plot_yields_and_spread(values):
-    # Extract dates, two-year yields, and ten-year yields from values
     dates = [item['date'] for item in values]
     two_year_yields = [item['two_year_yield'] for item in values]
     ten_year_yields = [item['ten_year_yield'] for item in values]
     
-    # Calculate the yield spread (10-year yield - 2-year yield)
     yield_spread = [ten - two for ten, two in zip(ten_year_yields, two_year_yields)]
 
-    # Plotting
     plt.figure(figsize=(12, 6))
     plt.plot(dates, two_year_yields, label='2-Year Yield', color='red')
     plt.plot(dates, ten_year_yields, label='10-Year Yield', color='blue')
@@ -72,5 +68,4 @@ with open(input_path, 'r', encoding='utf-8') as file:
     xml_data = file.read()
 
 values = parse_xml(xml_data)
-
 plot_yields_and_spread(values)
